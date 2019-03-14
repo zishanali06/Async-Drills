@@ -23,6 +23,8 @@ const done = () => {
     console.log("Job's done!");
 }
 
+
+//Recersive function with a callback
 const countdown = (num, callback) => {
     setTimeout(() => {
         if(num > 0){
@@ -34,4 +36,23 @@ const countdown = (num, callback) => {
     }, 1000);
 };
 
-countdown(12, done);
+countdown(3, done);
+
+let myOrder = {
+    lunch: 'Fried Rice',
+    drink: 'Pepsi'
+}
+
+console.log(myOrder);
+
+// let lunchTime = true;
+// let orderMeSomeFood = () => {
+//     return new Promise((resolve, reject) => {
+//         if(lunchTime === true){
+//             let myOrder = {
+//                 lunch: 'Fried Rice',
+//                 drink: 'Pepsi'
+//             }
+//         }
+//     });
+// };

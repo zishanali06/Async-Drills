@@ -19,40 +19,44 @@ sayMessage('yolo');
 
 // getWords()
 
-const done = () => {
-    console.log("Job's done!");
-}
+// const done = () => {
+//     console.log("Job's done!");
+// }
 
 
 //Recersive function with a callback
-const countdown = (num, callback) => {
-    setTimeout(() => {
-        if(num > 0){
-            countdown(num - 1, callback);
-            console.log(`Count is: ${num}`)
+// const countdown = (num, callback) => {
+//     setTimeout(() => {
+//         if(num > 0){
+//             countdown(num - 1, callback);
+//             console.log(`Count is: ${num}`)
+//         } else {
+//             callback();
+//         };
+//     }, 1000);
+// };
+
+// countdown(3, done);
+
+let lunchTime = true;
+let orderMeSomeFood = () => {
+    return new Promise((resolve, reject) => {
+        if(lunchTime === true){
+            let myOrder = {
+                lunch: 'Fried Rice',
+                drink: 'Pepsi'
+            };
+            resolve(myOrder);
         } else {
-            callback();
+            let error = new Error('HOUSTON WE HAVE A PROBLEM!');
+            reject(error);
         };
-    }, 1000);
+    });
 };
 
-countdown(3, done);
-
-let myOrder = {
-    lunch: 'Fried Rice',
-    drink: 'Pepsi'
-}
-
-console.log(myOrder);
-
-// let lunchTime = true;
-// let orderMeSomeFood = () => {
-//     return new Promise((resolve, reject) => {
-//         if(lunchTime === true){
-//             let myOrder = {
-//                 lunch: 'Fried Rice',
-//                 drink: 'Pepsi'
-//             }
-//         }
-//     });
-// };
+orderMeSomeFood()
+.then((comingfrompromise) => {
+    console.log(comingfrompromise);
+}).catch((errorcomingfrompromise) => {
+    console.log(errorcomingfrompromise);
+})
